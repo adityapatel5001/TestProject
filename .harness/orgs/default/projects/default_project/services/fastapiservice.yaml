@@ -1,0 +1,5 @@
+service:
+  name: fastapi-service
+  identifier: fastapiservice
+  orgIdentifier: default
+  projectIdentifier: default_project
