@@ -52,3 +52,9 @@ pipeline:
                       - v1
                     dockerfile: app/Dockerfile
                     context: app
+  variables:
+    - name: IMAGE_TAG
+      type: String
+      description: ""
+      required: true
+      value: ""
