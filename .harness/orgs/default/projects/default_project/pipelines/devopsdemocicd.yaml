@@ -1,0 +1,52 @@
+pipeline:
+  name: devopsdemo-cicd
+  identifier: devopsdemocicd
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: adityagithubconn
+        build: <+input>
+  stages:
+    - stage:
+        name: Build-FastAPI
+        identifier: BuildFastAPI
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Test-FastAPI
+                  identifier: TestFastAPI
+                  spec:
+                    shell: Sh
+                    command: |-
+                      cd app
+                      pip install -r requirements.txt
+                      pytest -v
+              - step:
+                  type: BuildAndPushACR
+                  name: Build-Push-Image
+                  identifier: BuildPushImage
+                  spec:
+                    connectorRef: Azure_connector_aditya
+                    repository: devopsdemoacr.azurecr.io/devops-demo
+                    subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
+                    tags:
+                      - ACR
