@@ -49,12 +49,12 @@ pipeline:
                     repository: devopsdemoacr.azurecr.io/devops-demo
                     subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
                     tags:
-                      - v1
+                      - <+pipeline.variables.IMAGE_TAG>
                     dockerfile: app/Dockerfile
                     context: app
   variables:
     - name: IMAGE_TAG
       type: String
       description: ""
-      required: true
-      value: ""
+      required: false
+      value: v1
