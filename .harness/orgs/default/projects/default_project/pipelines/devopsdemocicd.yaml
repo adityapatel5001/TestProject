@@ -49,4 +49,5 @@ pipeline:
                     repository: devopsdemoacr.azurecr.io/devops-demo
                     subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
                     tags:
-                      - ACR
+                      - v1
+                    dockerfile: Dockerfile
