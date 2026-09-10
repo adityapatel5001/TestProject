@@ -17,13 +17,13 @@ pipeline {
 
         stage('Syntax Check') {
             steps {
-                // your command
+                sh 'python -m py_compile *.py'
             }
         }
 
         stage('Unit Tests') {
             steps {
-                sh 'pytest app/test_app.py'
+                 sh 'python3 -m pytest app/test_app.py'
             }
         }
 
