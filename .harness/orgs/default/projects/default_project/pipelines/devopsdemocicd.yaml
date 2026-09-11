@@ -61,6 +61,14 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: fastapiservice
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
           environment:
             environmentRef: Dev
             deployToAll: false
