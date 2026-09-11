@@ -1,0 +1,43 @@
+pipeline:
+  name: newpipeline
+  identifier: newpipeline
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: adityagithubconn
+        build: <+input>
+  stages:
+    - stage:
+        name: buildnew
+        identifier: buildnew
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushACR
+                  name: BuildAndPushACR_1
+                  identifier: BuildAndPushACR_1
+                  spec:
+                    connectorRef: Azure_connector_aditya
+                    repository: devopsdemoacr.azurecr.io
+                    subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
+                    tags:
+                      - v1
+                    dockerfile: app/Dockerfile
