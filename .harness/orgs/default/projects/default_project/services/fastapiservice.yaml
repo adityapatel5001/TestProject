@@ -4,5 +4,33 @@ service:
   orgIdentifier: default
   projectIdentifier: default_project
   serviceDefinition:
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: fastapik8smanifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: adityagithubconn
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: Azure_connector_aditya
+                tag: <+input>
+                digest: ""
+                subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
+                registry: devopsdemoacr
+                repository: devops-demo
+              identifier: fastapiacrartifact
+              type: Acr
     type: Kubernetes
