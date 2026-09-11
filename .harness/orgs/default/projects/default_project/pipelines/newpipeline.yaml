@@ -37,7 +37,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      cd C:\devopsdemo
+                      cd app
                       RUN pip install -r requirements.txt
               - step:
                   type: BuildAndPushACR
