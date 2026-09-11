@@ -38,7 +38,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       cd app
-                      RUN pip install -r requirements.txt
+                      pip install -r requirements.txt
+                      pytest -v
               - step:
                   type: BuildAndPushACR
                   name: BuildAndPushACR_1
