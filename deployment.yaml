@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: fastapi-container
-          image: devopsdemoacr.azurecr.io/devops-demo:v1
+          image: <+artifact.image>
           ports:
             - containerPort: 8000
           readinessProbe:
