@@ -31,6 +31,15 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      cd C:\devopsdemo
+                      RUN pip install -r requirements.txt
+              - step:
                   type: BuildAndPushACR
                   name: BuildAndPushACR_1
                   identifier: BuildAndPushACR_1
