@@ -48,5 +48,5 @@ pipeline:
                     repository: devopsdemoacr.azurecr.io
                     subscriptionId: 6f1bb50b-55ac-48dc-ab4c-e68a7dc49927
                     tags:
-                      - v1
+                      - v2
                     dockerfile: app/Dockerfile
