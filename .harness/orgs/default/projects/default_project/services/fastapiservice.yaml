@@ -18,8 +18,9 @@ service:
                   paths:
                     - k8s/deployment.yaml
                     - k8s/service.yaml
-                    - k8s/values.yaml
                   branch: main
+              valuesPaths:
+                - k8s/values.yaml
               skipResourceVersioning: false
               enableDeclarativeRollback: false
       artifacts:
