@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: fastapi-container
-          image: {{.Values.image }}
+          image: devopsdemoacr.azurecr.io/devopsdemo:v2
           ports:
             - containerPort: 8000
           readinessProbe:
